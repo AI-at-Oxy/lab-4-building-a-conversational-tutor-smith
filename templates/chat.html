@@ -81,6 +81,11 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
+        // Display initial tutor message on page load
+        {% if initial_message %}
+        addMessage({{ initial_message | tojson }}, "assistant");
+        {% endif %}
+
         async function sendMessage() {
             const input = document.getElementById("user-input");
             const message = input.value.trim();

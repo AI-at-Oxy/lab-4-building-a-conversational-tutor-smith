@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = "change-this-to-something-secret"
 
 # Ollama configuration
-MODEL = "ollama/llama3.2"
+MODEL = "ollama/ministral-3:3b"
 API_BASE = "http://localhost:11434"
 
 
@@ -28,7 +28,13 @@ def get_llm_response(conversation_history):
 def index():
     # Start a fresh conversation with the system prompt
     session["history"] = [{"role": "system", "content": SYSTEM_PROMPT}]
-    return render_template("chat.html", topic=TOPIC, num_questions=len(QUESTIONS))
+    
+    # Get initial greeting from the tutor
+    initial_greeting = get_llm_response(session["history"])
+    session["history"].append({"role": "assistant", "content": initial_greeting})
+    session.modified = True
+    
+    return render_template("chat.html", topic=TOPIC, num_questions=len(QUESTIONS), initial_message=initial_greeting)
 
 
 @app.route("/chat", methods=["POST"])
