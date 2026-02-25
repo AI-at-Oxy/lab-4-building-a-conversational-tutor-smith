@@ -64,7 +64,7 @@
     <h1>AI Tutor</h1>
     <p>Topic: <strong>{{ topic }}</strong> | Questions: <strong>{{ num_questions }}</strong></p>
 
-    <div id="chat-box"></div>
+    <div id="chat-box" data-initial-message='{{ initial_message | tojson }}'></div>
 
     <div id="input-area">
         <input type="text" id="user-input" placeholder="Type your response..." autofocus>
@@ -82,9 +82,10 @@
         }
 
         // Display initial tutor message on page load
-        {% if initial_message %}
-        addMessage({{ initial_message | tojson }}, "assistant");
-        {% endif %}
+        const initialMessage = document.getElementById("chat-box").dataset.initialMessage;
+        if (initialMessage) {
+            addMessage(JSON.parse(initialMessage), "assistant");
+        }
 
         async function sendMessage() {
             const input = document.getElementById("user-input");
