@@ -26,7 +26,16 @@ QUESTIONS = [
         "question": "Who's POV are you playing from in FNAF 4",
         "answer": "The Crying Child, Afton's youngest son.",
         "misconception": "Students sometimes say that you are playing as the older brother, Micheal Afton, because he's the main character in many of the later games, but it's actually the Crying Child, who is the youngest son of William Afton."
-    },
+    }, {
+        "question": "Who is the original Purple Guy",
+        "answer": "William Afton, one of the main antagonists of the game.",
+        "misconception": "Despite his name, the Purple Guy is not actually purple, his color is a symbolic representation of him being a shadowy, murderous figure."
+    }, {
+        "question": "Why was The Puppet made?",
+        "answer": "To protect Charlie Emily",
+        "misconception": "The Puppet was programmed with a specific safety feature to identify and keep specifically Charlie Emily inside the building, functioning more as a localized, high-tech babysitter than a general security guard."
+    }
+
 ]
 
 # Build the system prompt with your questions baked in
